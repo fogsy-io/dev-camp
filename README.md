@@ -22,7 +22,7 @@ Create a live monitoring system for the International Space Station (ISS)
 
 * Link für ISS Daten:
   * http://api.open-notify.org/iss-now.json
-* Download ISS adapter template
+* Download ISS adapter template (File: iss_template.json)
 * Go to StreamPipes Connect an click on "Upload Adapter Template" (Top right corner)
 * Select the adapter in the UI and start it
 * Navigate to the Pipeline Editor 
