@@ -54,8 +54,8 @@ Copy this code snippet into the class Example:
 @Override
   public void onEvent(Event event, SpOutputCollector out) {
 
-    float latitude = event.getFieldBySelector("latitude").getAsPrimitive().getAsFloat();
-    float longitude = event.getFieldBySelector("longitude").getAsPrimitive().getAsFloat();
+    float latitude = event.getFieldByRuntimeName("latitude").getAsPrimitive().getAsFloat();
+    float longitude = event.getFieldByRuntimeName("longitude").getAsPrimitive().getAsFloat();
 
     float karlsruhe_latitude = 49.00937f;
     float karlsruhe_longitude = 8.40444f;
