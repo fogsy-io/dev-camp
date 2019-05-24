@@ -36,11 +36,11 @@ Create a live monitoring system for the International Space Station (ISS)
 mvn archetype:generate                                           \
   -DarchetypeGroupId=org.streampipes                             \
   -DarchetypeArtifactId=streampipes-archetype-pe-processors-jvm  \
-  -DarchetypeVersion=0.60.1
+  -DarchetypeVersion=0.61.0
 ```
 * Settings:
   * Group id: org.streampipes.example
-  * Artifact id: GeoMonitoring
+  * Artifact id: DistanceCalculation
   * Version: Hit Enter
   * Package: Hit Enter
   * Last Step: Y
