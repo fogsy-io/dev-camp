@@ -22,7 +22,7 @@ Create a live monitoring system for the International Space Station (ISS)
 
 * Link für ISS Daten:
   * http://api.open-notify.org/iss-now.json
-* Download ISS adapter template
+* Download ISS adapter template (File: iss_template.json)
 * Go to StreamPipes Connect an click on "Upload Adapter Template" (Top right corner)
 * Select the adapter in the UI and start it
 * Navigate to the Pipeline Editor 
@@ -36,13 +36,35 @@ Create a live monitoring system for the International Space Station (ISS)
 mvn archetype:generate                                           \
   -DarchetypeGroupId=org.streampipes                             \
   -DarchetypeArtifactId=streampipes-archetype-pe-processors-jvm  \
-  -DarchetypeVersion=0.60.1
+  -DarchetypeVersion=0.61.0
 ```
 * Settings:
   * Group id: org.streampipes.example
-  * Artifact id: GeoMonitoring
+  * Artifact id: DistanceCalculation
   * Version: Hit Enter
   * Package: Hit Enter
   * Last Step: Y
 
 * Open new Project in IDE (IntelliJ)
+
+## Code to calculate distance
+Copy this code snippet into the class Example:
+
+``` java
+@Override
+  public void onEvent(Event event, SpOutputCollector out) {
+
+    float latitude = event.getFieldByRuntimeName("latitude").getAsPrimitive().getAsFloat();
+    float longitude = event.getFieldByRuntimeName("longitude").getAsPrimitive().getAsFloat();
+
+    float karlsruhe_latitude = 49.00937f;
+    float karlsruhe_longitude = 8.40444f;
+
+    double distance = CalculateDistance.dist(latitude, longitude, karlsruhe_latitude, karlsruhe_longitude);
+
+    event.addField("distance_to_iss", distance);
+
+    out.collect(event);
+  }
+```
+
