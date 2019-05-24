@@ -46,3 +46,25 @@ mvn archetype:generate                                           \
   * Last Step: Y
 
 * Open new Project in IDE (IntelliJ)
+
+## Code to calculate distance
+Copy this code snippet into the class Example:
+
+``` java
+@Override
+  public void onEvent(Event event, SpOutputCollector out) {
+
+    float latitude = event.getFieldBySelector("latitude").getAsPrimitive().getAsFloat();
+    float longitude = event.getFieldBySelector("longitude").getAsPrimitive().getAsFloat();
+
+    float karlsruhe_latitude = 49.00937f;
+    float karlsruhe_longitude = 8.40444f;
+
+    double distance = CalculateDistance.dist(latitude, longitude, karlsruhe_latitude, karlsruhe_longitude);
+
+    event.addField("distance_to_iss", distance);
+
+    out.collect(event);
+  }
+```
+
